@@ -156,24 +156,60 @@ namespace Selenium.Wrappers
             // Navigate from the original <table> to the DataTables wrapper of the pagination control.
             // The HTML for this control is dynamically injected.
             var wrapper = this.Driver.FindElement(By.Id(string.Format("{0}_paginate", id)));
+            
+            // Get the paging style of the table.
+            var pagingType = wrapper.GetAttribute("class").Replace("dataTables_paginate", string.Empty).Trim();
 
-            // Click the link which will change the current page.
-            switch (page)
+            switch (pagingType)
             {
-                case Pagination.First:
-                    wrapper.FindElement(By.CssSelector(".first a")).Click();
+				case "paging_full":
+                case "paging_full_numbers":
+                    // Attempt to navigate using the DataTables default full pagination style.
+                    switch (page)
+                    {
+                        case Pagination.First:
+                            this.Driver.FindElement(By.Id(string.Format("{0}_first", id))).Click();
+                            break;
+
+                        case Pagination.Previous:
+                            this.Driver.FindElement(By.Id(string.Format("{0}_previous", id))).Click();
+                            break;
+
+                        case Pagination.Next:
+                            this.Driver.FindElement(By.Id(string.Format("{0}_next", id))).Click();
+                            break;
+
+                        case Pagination.Last:
+                            this.Driver.FindElement(By.Id(string.Format("{0}_last", id))).Click();
+                            break;
+                    }
                     break;
 
-                case Pagination.Previous:
-                    wrapper.FindElement(By.CssSelector(".prev a")).Click();
+                case "paging_bootstrap":
+                    // Attempt to navigate using the DataTables Bootstrap pagination plugin.
+                    switch (page)
+                    {
+                        case Pagination.First:
+                            wrapper.FindElement(By.CssSelector(".first a")).Click();
+                            break;
+
+                        case Pagination.Previous:
+                            wrapper.FindElement(By.CssSelector(".prev a")).Click();
+                            break;
+
+                        case Pagination.Next:
+                            wrapper.FindElement(By.CssSelector(".next a")).Click();
+                            break;
+
+                        case Pagination.Last:
+                            wrapper.FindElement(By.CssSelector(".last a")).Click();
+                            break;
+                    }
                     break;
 
-                case Pagination.Next:
-                    wrapper.FindElement(By.CssSelector(".next a")).Click();
-                    break;
-
-                case Pagination.Last:
-                    wrapper.FindElement(By.CssSelector(".last a")).Click();
+                default:
+                    // Table is likely using an alternative pagination style which is unsupported. Throw an assert failure to report this.
+                    Assert.IsTrue(false, "The table is using an alternative pagination style which is unsupported.");
                     break;
             }
         }
