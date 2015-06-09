@@ -10,6 +10,8 @@ Two versions are provided:
 
 Both versions are fully commented and explain what each method is doing.
 
+NOTE: This wrapper was built to interact with a DataTable which is using the [Datatables Bootstrap pagination plugin](https://github.com/Jowin/Datatables-Bootstrap3). If there is enough interest I can make a vanilla version which will work with the default DataTable pagination style.
+
 Usage
 -----
 
@@ -107,6 +109,7 @@ Testing
 This wrapper has been tested using:
 
 - Datatables v1.10.7
+- [Datatables Bootstrap pagination plugin](https://github.com/Jowin/Datatables-Bootstrap3)
 - Selenium v2.45.0
 - Latest Chrome web driver.
 
