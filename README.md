@@ -98,9 +98,11 @@ The following `pagingType` pagination styles are supported:
 
 - `full`
 - `full_numbers`
-- `bootstrap` - using the third party [Bootstrap pagination plugin](https://github.com/Jowin/Datatables-Bootstrap3)
+- Using the third party [Bootstrap pagination plugin](https://github.com/Jowin/Datatables-Bootstrap3):
+  - `bs_four_button`
+  - `bs_full`
 
-DataTables configured to use `simple` or `simple_numbers` may work depending on which methods are called and your specific use case, but it is not recommended.
+DataTables configured to use `simple` or `simple_numbers` are not supported at this time. You can still interact with it, but any actions involving pagination will fail.
 
 Dependencies
 ------------

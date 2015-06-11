@@ -9,9 +9,11 @@
 
 - Added support for the following `pagingType` pagination styles:
 
-- `full`
-- `full_numbers`
-- `bootstrap` - using the third party [Bootstrap pagination plugin](https://github.com/Jowin/Datatables-Bootstrap3)
+  - `full`
+  - `full_numbers`
+  - Using the third party [Bootstrap pagination plugin](https://github.com/Jowin/Datatables-Bootstrap3):
+    - `bs_four_button`
+    - `bs_full`
 
 ## Breaking Changes
 

@@ -162,7 +162,7 @@ namespace Selenium.Wrappers
 
             switch (pagingType)
             {
-				case "paging_full":
+                case "paging_full":
                 case "paging_full_numbers":
                     // Attempt to navigate using the DataTables default full pagination style.
                     switch (page)
@@ -185,6 +185,8 @@ namespace Selenium.Wrappers
                     }
                     break;
 
+                case "paging_bs_four_button":
+                case "paging_bs_full":
                 case "paging_bootstrap":
                     // Attempt to navigate using the DataTables Bootstrap pagination plugin.
                     switch (page)
