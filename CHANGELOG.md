@@ -1,4 +1,21 @@
-﻿<a name="1.1.0"></a>
+﻿<a name="1.1.1"></a>
+# 1.1.1 Pagination Mark II (2015-06-11)
+
+## Bug Fixes
+
+- Fixed detection for Bootstrap pagination plugin when using `bs_four_button` and `bs_full` paging options.
+
+## Features
+
+- None
+
+## Breaking Changes
+
+- None
+
+---
+
+<a name="1.1.0"></a>
 # 1.1.0 Pagination (2015-06-09)
 
 ## Bug Fixes
