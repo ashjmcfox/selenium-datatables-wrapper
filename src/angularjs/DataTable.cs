@@ -231,7 +231,7 @@ namespace Selenium.Wrappers
             var wrapper = this.Driver.FindElement(this.Selector);
 
             // Navigate from the original <table> to the column which contains the supplied column name.
-            var col = wrapper.FindElement(By.XPath(string.Format("//thead/tr/th[text()='{0}']", column)));
+            var col = wrapper.FindElement(By.XPath(string.Format("thead/tr/th[text()='{0}']", column)));
 
             // Generate the css class for the direction in which we want to sort.
             var dir = direction.ToString() == "Ascending" ? "sorting_asc" : "sorting_desc";
@@ -258,7 +258,7 @@ namespace Selenium.Wrappers
             var wrapper = this.Driver.FindElement(this.Selector);
 
             // Navigate from the original <table> to the column with the supplied index.
-            var col = wrapper.FindElement(By.XPath(string.Format("//thead/tr/th[{0}]", index)));
+            var col = wrapper.FindElement(By.XPath(string.Format("thead/tr/th[{0}]", index)));
 
             // Generate the css class for the direction in which we want to sort.
             var dir = direction.ToString() == "Ascending" ? "sorting_asc" : "sorting_desc";
@@ -352,7 +352,7 @@ namespace Selenium.Wrappers
             var wrapper = this.Driver.FindElement(this.Selector);
 
             // Navigate from the original <table> to the row which contains the supplied text.
-            return wrapper.FindElement(By.XPath(string.Format("//tbody/tr[td//text()[contains(., '{0}')]]", text)));
+            return wrapper.FindElement(By.XPath(string.Format("tbody/tr[td//text()[contains(., '{0}')]]", text)));
         }
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace Selenium.Wrappers
             var wrapper = this.Driver.FindElement(this.Selector);
 
             // Navigate from the original <table> to the row with the supplied index.
-            return wrapper.FindElement(By.XPath(string.Format("//tbody/tr[{0}]", index)));
+            return wrapper.FindElement(By.XPath(string.Format("tbody/tr[{0}]", index)));
         }
 
         /// <summary>
@@ -393,11 +393,11 @@ namespace Selenium.Wrappers
             if (asHtml)
             {
                 // Get the HTML source value of the row cell.
-                return rowElement.FindElement(By.XPath(string.Format("//td[{0}]", cellIndex))).GetAttribute("innerHTML"); ;
+                return rowElement.FindElement(By.XPath(string.Format("td[{0}]", cellIndex))).GetAttribute("innerHTML");
             }
 
             // Get the text value of the row cell.
-            return rowElement.FindElement(By.XPath(string.Format("//td[{0}]", cellIndex))).Text;
+            return rowElement.FindElement(By.XPath(string.Format("td[{0}]", cellIndex))).Text;
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Selenium.Wrappers
             try
             {
                 // Search for a hyperlink to click.
-                rowElement.FindElement(By.XPath(string.Format("//td[{0}]//a", cellIndex))).Click();
+                rowElement.FindElement(By.XPath(string.Format("td[{0}]//a", cellIndex))).Click();
                 return;
             }
             catch (NoSuchElementException)
@@ -426,7 +426,7 @@ namespace Selenium.Wrappers
             try
             {
                 // Search for a button to click.
-                rowElement.FindElement(By.XPath(string.Format("//td[{0}]//button", cellIndex))).Click();
+                rowElement.FindElement(By.XPath(string.Format("td[{0}]//button", cellIndex))).Click();
             }
             catch (NoSuchElementException)
             {
