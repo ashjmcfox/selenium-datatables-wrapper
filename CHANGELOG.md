@@ -1,4 +1,22 @@
-﻿<a name="1.1.1"></a>
+﻿<a name="1.1.2"></a>
+# 1.1.2 Bug fix release (2015-06-29)
+
+## Bug Fixes
+
+- Fixed issue with DataTable search test. Now accounts for searching a table with only one record.
+- Fixed issues when interacting with multiple Datatables on the same page. Modified XPath selectors.
+
+## Features
+
+- Improved mechanism for clearing search strings from a DataTable. Provides better performance.
+
+## Breaking Changes
+
+- None
+
+---
+
+<a name="1.1.1"></a>
 # 1.1.1 Pagination Mark II (2015-06-11)
 
 ## Bug Fixes
