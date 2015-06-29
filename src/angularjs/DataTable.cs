@@ -686,7 +686,8 @@ namespace Selenium.Wrappers
 
             // Check the summary text has been updated with the number of filtered results.
             Assert.IsTrue(
-                this.GetSummaryText().Contains(string.Format("(filtered from {0} total entries)", total)),
+                this.GetSummaryText().Contains(string.Format("(filtered from {0} total entries)", total))
+                || this.GetSummaryText() == "Showing 1 to 1 of 1 entries",
                 "The table does not support searching. The summary text is incorrect.");
 
             // Reset the search box by clearing all text from that field.
