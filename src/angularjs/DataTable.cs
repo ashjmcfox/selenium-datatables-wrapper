@@ -289,12 +289,11 @@ namespace Selenium.Wrappers
             // Get the <input> element where the search text is entered.
             var element = wrapper.FindElement(By.TagName("input"));
 
-            // Clear the previous value using the backspace key instead of the built in Selenium Clear() method.
-            // This is because the DataTables 'keyup' and 'keydown' events must be triggered in order to work correctly.
-            while (wrapper.FindElement(By.TagName("input")).GetAttribute("value").Length > 0)
-            {
-                element.SendKeys(Keys.Backspace);
-            }
+            // Clear the previous value using the built in Selenium Clear().
+            element.Clear();
+
+            // The backspace key must also be sent in order to trigger the DataTables refresh event.
+            element.SendKeys(Keys.Backspace);
 
             // Send the string which will be typed into the search box.
             element.SendKeys(query);
