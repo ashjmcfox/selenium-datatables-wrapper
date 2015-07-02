@@ -329,7 +329,7 @@ namespace Selenium.Wrappers
         public int GetTotalEntries()
         {
             // Get the total entries from the summary text using regular expressions.
-            var match = Regex.Match(this.GetSummaryText(), @"Showing \d+ to \d+ of (\d+) entries.*");
+            var match = Regex.Match(this.GetSummaryText().Replace(",", string.Empty), @"Showing \d+ to \d+ of (\d+) entries.*");
 
             // Return the total entries.
             return match.Groups[1] != null ? Convert.ToInt32(match.Groups[1].Value) : 0;
@@ -484,8 +484,8 @@ namespace Selenium.Wrappers
             // Check the table page length is initially 10 by looking at the summary text.
             Assert.IsTrue(
                 total >= 10
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support changing the page size to 10.");
 
             // Change the number of results per page to 25.
@@ -494,8 +494,8 @@ namespace Selenium.Wrappers
             // Check the table page length is now 25 by looking at the summary text.
             Assert.IsTrue(
                 total >= 25
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 25 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 25 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support changing the page size to 25.");
 
             // Change the number of results per page to 50.
@@ -504,8 +504,8 @@ namespace Selenium.Wrappers
             // Check the table page length is now 50 by looking at the summary text.
             Assert.IsTrue(
                 total >= 50
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 50 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 50 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support changing the page size to 50.");
 
             // Change the number of results per page to 100.
@@ -514,8 +514,8 @@ namespace Selenium.Wrappers
             // Check the table page length is now 100 by looking at the summary text.
             Assert.IsTrue(
                 total >= 100
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 100 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 100 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support changing the page size to 100.");
 
             // Reset the number of results per page back to 10.
@@ -524,8 +524,8 @@ namespace Selenium.Wrappers
             // Check the table page length has been reset to 10 by looking at the summary text.
             Assert.IsTrue(
                 total >= 10
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support changing the page size to 10.");
         }
 
@@ -554,8 +554,8 @@ namespace Selenium.Wrappers
             // Check the table page is initially 1 by looking at the summary text.
             Assert.IsTrue(
                 total >= 10
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support navigating to page 1.");
 
             if (total > 10)
@@ -566,8 +566,8 @@ namespace Selenium.Wrappers
                 // Check the table page is now 2 by looking at the summary text.
                 Assert.IsTrue(
                     total >= 20
-                        ? this.GetSummaryText() == string.Format("Showing 11 to 20 of {0} entries", total)
-                        : this.GetSummaryText() == string.Format("Showing 11 to {0} of {0} entries", total),
+                        ? this.GetSummaryText() == string.Format("Showing 11 to 20 of {0:n0} entries", total)
+                        : this.GetSummaryText() == string.Format("Showing 11 to {0} of {0:n0} entries", total),
                     "The table does not support navigating to page 2.");
             }
 
@@ -579,8 +579,8 @@ namespace Selenium.Wrappers
                 // Check the table page is now 3 by looking at the summary text.
                 Assert.IsTrue(
                     total >= 30
-                        ? this.GetSummaryText() == string.Format("Showing 21 to 30 of {0} entries", total)
-                        : this.GetSummaryText() == string.Format("Showing 21 to {0} of {0} entries", total),
+                        ? this.GetSummaryText() == string.Format("Showing 21 to 30 of {0:n0} entries", total)
+                        : this.GetSummaryText() == string.Format("Showing 21 to {0} of {0:n0} entries", total),
                     "The table does not support navigating to page 3.");
             }
 
@@ -590,8 +590,8 @@ namespace Selenium.Wrappers
             // Check the table page has been reset to 1 by looking at the summary text.
             Assert.IsTrue(
                 total >= 10
-                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0} entries", total)
-                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0} entries", total),
+                    ? this.GetSummaryText() == string.Format("Showing 1 to 10 of {0:n0} entries", total)
+                    : this.GetSummaryText() == string.Format("Showing 1 to {0} of {0:n0} entries", total),
                 "The table does not support navigating to page 1.");
         }
 
@@ -684,7 +684,7 @@ namespace Selenium.Wrappers
 
             // Check the summary text has been updated with the number of filtered results.
             Assert.IsTrue(
-                this.GetSummaryText().Contains(string.Format("(filtered from {0} total entries)", total))
+                this.GetSummaryText().Contains(string.Format("(filtered from {0:n0} total entries)", total))
                 || this.GetSummaryText() == "Showing 1 to 1 of 1 entries",
                 "The table does not support searching. The summary text is incorrect.");
 
